@@ -1,7 +1,8 @@
 name: Create Jira issue
 on:
   issues:
-    types: [opened]
+    types:
+      - opened
 
 jobs:
   create-issue:
@@ -9,7 +10,10 @@ jobs:
     strategy:
       matrix:
         team_member:
-          - { name: "1mjay", JIRA_API_TOKEN: "${{ secrets.JIRA_API_TOKEN_USER1 }}", JIRA_USER_EMAIL: "${{ secrets.JIRA_USER_EMAIL_USER1 }}" }
+          - name: "1mjay"
+            env:
+              JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN_USER1 }}
+              JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL_USER1 }}
           # 팀원 추가 예정
 
     steps:
